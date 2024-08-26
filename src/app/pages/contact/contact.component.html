@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="contactForm" class="row g-3 needs-validation" novalidate submit="enviar($event)">
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">First name</label>
+          <input type="text" class="form-control" id="validationCustom01" formControlName="name"
+          [ngClass]="{'is-invalid' : hasErrors('name', 'required')}"
+          >
+          @if(hasErrors('name', 'required')){
+            <div class="text-danger">
+            You have complete this field
+          </div>
+          }
+          
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Last name</label>
+          <input type="text" class="form-control" id="validationCustom02" 
+          formControlName="lastName"
+          [ngClass]="{'is-invalid' : hasErrors('lastName', 'required')}">
+          @if(hasErrors('lastName', 'required')){
+            <div class="text-danger">
+            You have complete this field
+          </div>
+          }
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustomUsername" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+            <input type="text" class="form-control" id="validationCustomUsername" 
+            aria-describedby="inputGroupPrepend" formControlName="mail"
+            [ngClass]="{'is-invalid' : hasErrors('mail', 'required') || hasErrors('mail', 'email')} ">
+            @if(hasErrors('mail', 'required')){
+                <div class="text-danger">
+                You have complete this field
+              </div>
+              }
+              @if(hasErrors('mail', 'email')){
+                <div class="text-danger">
+                    Must be email type
+              </div>
+              }
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="validationCustom05" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="validationCustom05" 
+          formControlName="zip"
+          [ngClass]="{'is-invalid' : hasErrors('zip', 'required') || hasErrors('zip', 'minlength')}">
+          @if(hasErrors('zip', 'required')){
+            <div class="text-danger">
+                You have complete this field
+          </div>
+          }
+          @if(hasErrors('zip', 'minlength')){
+            <div class="text-danger">
+                You have to write at least 3 characters
+          </div>
+          }
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
+
